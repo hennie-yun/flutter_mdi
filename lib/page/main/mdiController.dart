@@ -3,10 +3,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_simple_calculator/flutter_simple_calculator.dart';
 
+
+import '../favorite/StockPriceTable.dart';
 import 'resizableWindow.dart';
 
 class MdiController {
   MdiController(this._onUpdate);
+
 
   List<ResizableWindow> _windows = List.empty(growable: true);
 
@@ -26,16 +29,26 @@ class MdiController {
     current();
   }
 
+
   Widget favstockWidget() {
-    return Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.black,
-        ),
-        height: 400,
-        width: 400,
-        child: Text('관심종목창이 뜰것임', style : TextStyle (color: Colors.white)));
+    return
+        StockPriceTable(stockData: stockData);
   }
+
+  // Widget favstockWidget() {
+  //
+  //   return StockPriceTable(stockData: stockData);
+  //
+  //   return Container(
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(5),
+  //         color: Colors.black,
+  //       ),
+  //       height: 400,
+  //       width: 400,
+  //       child: StockPriceTable(stockData: stockData),
+  //   );
+  // }
 
   Widget currentpriceWidget() {
     return Container(
@@ -57,7 +70,7 @@ class MdiController {
   }
 
   void fav() {
-    _createNewWindowedApp("Calculator", favstockWidget());
+    _createNewWindowedApp("stockPrice", favstockWidget());
   }
 
   void _createNewWindowedApp(String title, Widget app) {

@@ -14,7 +14,7 @@ class SampleApp extends StatelessWidget {
     // TODO: implement build
     throw UnimplementedError();
   }
- 
+
   }
 
 class MyApp extends StatelessWidget {
